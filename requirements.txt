@@ -1,2 +1,2 @@
-gevent==1.0dev
-web.py>=0.36
+Flask==0.10.1
+

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+</head>
+<body>
+    {% for i in range(total) %}
+    <a href="{{posts[i]['url']}}">{{posts[i]['title']}}</a>
+    <br>
+    <p>{{posts[i]['abstract']}}<br><br></p>
+    {% endfor %}
+</body>
+</html>
