@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link href="../static/moment_douban_authority.css" rel="stylesheet">
+</head>
+<body>
+    <div class="bs-header">
+      <div class="container">
+	    <ul>
+
+            <li><a href="/download/?from_rec=&amp;target=android&amp;from_pid=101648" class="prestoicon-android">下载一刻</a>
+            </li><li><span>iOS 版即将发布</span></li>
+
+	    </ul>
+	    <div class="nav-logo">
+          <a href="/">
+            <img class="logo" width="30" height="30" src="http://img3.douban.com/dae/ps/logo_56-3ef03413a90e85f954c144ced276b089.png">
+	      一刻
+          </a>
+	    </div>
+      </div>
+    </div>
+    <div class="container bs-docs-container">
+        <div class="post-container">
+            {% block content_1 %}{% endblock %}
+        </div>
+    </div>
+</body>
+</html>
