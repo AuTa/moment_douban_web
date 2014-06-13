@@ -40,17 +40,18 @@ class Moment:
                 return False
 
     def write_data(self):
-        if os.path.exists('data\\' + self.date + '.json'):
-            with open('data\\' + self.date + '.json', mode='r+', encoding='utf-8') as f:
+        path = os.path.dirname(os.path.abspath('__file__')) + '/data/'
+        if os.path.exists(path + self.date + '.json'):
+            with open(path + self.date + '.json', mode='r+', encoding='utf-8') as f:
                 data = json.load(f)
             if data['total'] != self.total:
-                with open('data\\' + self.date + '.json', mode='w', encoding='utf-8') as f:
+                with open(path + self.date + '.json', mode='w', encoding='utf-8') as f:
                     json.dump(self.data, f, indent=2, ensure_ascii=False)
                 return True
         else:
-            if os.path.exists('data\\') == False:
-                os.mkdir('data\\')
-            with open('data\\' + self.date + '.json', mode='w', encoding='utf-8') as f:
+            if os.path.exists(path) == False:
+                os.mkdir(path)
+            with open(path + self.date + '.json', mode='w', encoding='utf-8') as f:
                 json.dump(self.data, f, indent=2, ensure_ascii=False)
             return True
         return False
@@ -90,14 +91,14 @@ def update(year, month, day):
     log_str = 'UDATE:' + time.ctime(start) + ' ' + run_result + '\n'
     print(log_str)
     path = os.path.abspath(os.path.join(os.path.dirname("__file__"),os.path.pardir))
-    with open(path + '\\tmp\\' + 'Log.txt', mode='ab') as f:
+    with open(path + '/tmp/' + 'Log.txt', mode='ab') as f:
         f.write(log_str.encode())
 
 def check():
     tmp = True
     i = 0
     run_result = ''
-    path = os.path.dirname(os.path.abspath('__file__')) + '\\data'
+    path = os.path.dirname(os.path.abspath('__file__')) + '/data'
     if os.path.exists(path):
         file_list = os.listdir(path)
         while tmp:
@@ -123,7 +124,7 @@ def check():
     log_str = 'CHECK:' + time.ctime(start) + ' ' + run_result + '\n'
     print(log_str)
     path = os.path.abspath(os.path.join(os.path.dirname("__file__"),os.path.pardir))
-    with open(path + '\\tmp\\' + 'Log.txt', mode='ab') as f:
+    with open(path + '/tmp/' + 'Log.txt', mode='ab') as f:
         f.write(log_str.encode())
 
 ###############################################################
@@ -156,7 +157,7 @@ def mymain(inc=1800):
     start = time.time()
     log_str = 'START:' + time.ctime(start) + '\n'
     print(log_str)
-    with open(path + '\\tmp\\' + 'Log.txt', mode='ab') as f:
+    with open(path + '/tmp/' + 'Log.txt', mode='ab') as f:
         f.write(log_str.encode())
     #设置调度
     e1 = s.enter(2,1,perform,(inc,))                        # 调度设置
